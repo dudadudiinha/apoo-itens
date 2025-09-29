@@ -1,5 +1,5 @@
-from model.item import Item
-from database.con import criar_conexao
+from model import Item
+from database import criar_conexao
 
 class ItemDAO:
     def adicionar(self, item: Item):
