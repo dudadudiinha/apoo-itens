@@ -1,7 +1,8 @@
 import sqlite3
 
 def criar_conexao():
-    return sqlite3.connect("itens.db")
+    conn = sqlite3.connect("itens.db")
+    return conn
 
 def criar_tabela():
     conn = criar_conexao()
@@ -9,10 +10,12 @@ def criar_tabela():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS itens (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT,
+            nome TEXT NOT NULL,
             descricao TEXT NOT NULL,
             quantidade INTEGER NOT NULL
         )
     """)
     conn.commit()
     conn.close()
+
+criar_tabela() # tabela criada assim que o arquivo é importado
